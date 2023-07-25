@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    padding: 10px;
+}
+
+.fov {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: fit-content;
+    padding: 10px;
+    margin: 150px;
+    background-color: lightblue;
+    scale: 180%;
+}
+
+[id*="tile"] {
+    height: 100px;
+    width: 100px;
+    background-color: red;
+    box-sizing: border-box;
+}
+
+#middleTile {
+    height: 100px;
+    width: 100px;
+    background-color: red;
+}
+
+#player {
+    height: 100px;
+    width: 100px;
+    position: fixed;
+    padding: 10px;
+    translate: -100%;
+    z-index: 999;
+}
+
+#walkButton {
+    padding: 5px;
+    font-size: large;
+    font-weight: 600;
+}
