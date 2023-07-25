@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dice-roller.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div id="phc">
+            <h1>Roll:</h1>
+            <p id="placeholder"></p>
+        </div>
+
+        <div class="grid">
+            <img class="dice1" src="../imgs/d4.png" onclick="go(d4)">
+            <img class="dice2" src="../imgs/d6.png" onclick="go(d6)">
+            <img class="dice3" src="../imgs/d8.png" onclick="go(d8)">
+            <img class="dice4" src="../imgs/d10.png" onclick="go(d10)">
+            <img class="dice5" src="../imgs/d12.png" onclick="go(d12)">
+            <img class="dice6" src="../imgs/d20.png" onclick="go(d20)">
+            <img class="dice7" src="../imgs/d100.png" onclick="go(d100)">
+            <div id="multi">
+                <img onclick="mtplr()" src="../imgs/plus.png" height="20px">
+                <div id="mbox">
+                    <p id="ecs">x</p>
+                    <span id="multiplier">1</span>
+                </div>
+                <img onclick="reset()" id="reload" src="../imgs/reload.png" height="20px">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="fov">
+        <img id="tile1">
+        <img id="tile2">
+        <img id="tile3">
+        <img id="tile4">
+        <div id="middleTile"><img id="tile5"><img id="player" src="imgs/player.png" alt="player"></div>
+        <img id="tile6">
+        <img id="tile7">
+        <img id="tile8">
+        <img id="tile9">
+    </div>
+
+    <img onclick="arrowTate()" id="arrow" src="imgs/arrow.png" alt="arrow" height="50px">
+
+    <button id="walkButton" onclick="walk()">Walk</button>
+    <button id="walkButton" onclick="back()">Back</button>
+
+    <script src="script.js" async defer></script>
+</body>
+
+</html>
