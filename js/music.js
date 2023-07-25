@@ -39,9 +39,9 @@ let trackList = [
 ];
 
 
-let trackNum = 0;
 
 // Play music
+let trackNum = 0;
 musicPlay.addEventListener('click', ()=>{
     playMusic.src = trackList[trackNum].path;
     playMusic.play();
@@ -92,31 +92,8 @@ function shuffle(array) {
     array.sort(() => Math.random() - 0.5);
 }
 
-function shuffleList() {
-    let testArr = [];
-    let tempNum = 0;
-    for(var i=1; i<trackList.length+1; i++){
-        testArr.push(i);
-    }
-    shuffle(testArr);
-    // tempNum = Math.floor(Math.random() * (testArr.length + 1));
-    playMusic.src = trackList[testArr[tempNum]].path;
-    playMusic.play();
-    musicTitle.innerHTML = trackList[testArr[tempNum]].title;
-    playMusic.addEventListener('ended', ()=>{
-        tempNum++;
-        playMusic.src = trackList[testArr[tempNum]].path;
-        playMusic.play();
-        musicTitle.innerHTML = trackList[testArr[tempNum]].title;
-    })
-    // trackNum = Math.floor(Math.random() * (trackList.length + 1));
-    // playMusic.src = trackList[trackNum].path;
-    // playMusic.play();
-}
-
-let shuffleBool = false;
-
 // Shuffle play list
+let shuffleBool = false;
 musicShuffle.addEventListener('click', ()=>{
 
     let testArr = [];
@@ -141,9 +118,5 @@ musicShuffle.addEventListener('click', ()=>{
         playMusic.play();
         musicTitle.innerHTML = trackList[testArr[tempNum]].title;
     })
-
-    // trackNum = Math.floor(Math.random() * (trackList.length + 1));
-    // playMusic.src = trackList[trackNum].path;
-    // playMusic.play();
 });
 
