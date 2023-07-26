@@ -157,6 +157,9 @@ function arrowTate() {
 
 //--------------walk--------------
 
+const gameSFX = new Audio();
+const sfxSrc = ['audio/win.mp3', 'audio/lose.wav', 'audio/tp.mp3'];
+
 function walk() {
 
     if (rot == 0) {
@@ -252,9 +255,16 @@ function walk() {
         }
     }
     if (mid.src.includes(grass)) {
-        location.reload();
+        gameSFX.src = sfxSrc[1];
+        gameSFX.play();
+        setTimeout ( function(){
+            alert('Game Over. Stay determined...');
+            location.reload();
+        }, 500);
     }
     if (mid.src.includes(tp)) {
+        gameSFX.src = sfxSrc[2];
+        gameSFX.play();
         setTimeout(() => {
             nwy = 7;
             nwx = 1;
@@ -286,6 +296,8 @@ function walk() {
         }, 100);
     }
     if (mid.src.includes(tp2)) {
+        gameSFX.src = sfxSrc[2];
+        gameSFX.play();
         setTimeout(() => {
             nwy = 0;
             nwx = 7;
@@ -318,11 +330,13 @@ function walk() {
 
     }
     if (mid.src.includes(win)) {
-        setTimeout(() => {
+        gameSFX.src = sfxSrc[0];
+        gameSFX.play();
+
+        setTimeout ( function(){
             alert('You Win!');
             location.reload();
-        }, 100);
-
+        }, 1500);
     }
 
 };
@@ -330,7 +344,7 @@ function walk() {
 function back() {
 
         if (rot == 0) {
-            if (ny < 1) { }
+            if (sy > 9) { }
             else {
                 nwy++;
                 northw.src = map[nwy][nwx];
@@ -353,7 +367,7 @@ function back() {
             }
         }
         if (rot == 1) {
-            if (ex > 9) { }
+            if (wx < 1) { }
             else {
                 nwx--;
                 northw.src = map[nwy][nwx];
@@ -376,7 +390,7 @@ function back() {
             }
         }
         if (rot == 2) {
-            if (sy > 9) { }
+            if (ny < 1 || north.src.includes(win)) { }
             else {
                 nwy--;
                 northw.src = map[nwy][nwx];
@@ -399,7 +413,7 @@ function back() {
             }
         }
         if (rot == 3) {
-            if (wx < 1) { }
+            if (ex > 9) { }
             else {
                 nwx++;
                 northw.src = map[nwy][nwx];
@@ -422,9 +436,16 @@ function back() {
             }
         }
         if (mid.src.includes(grass)) {
+            gameSFX.src = sfxSrc[1];
+            gameSFX.play();
+            setTimeout ( function(){
+            alert('Game Over. Stay determined...');
             location.reload();
+        }, 500);
         }
         if (mid.src.includes(tp)) {
+            gameSFX.src = sfxSrc[2];
+            gameSFX.play();
             setTimeout(() => {
                 nwy = 7;
                 nwx = 1;
@@ -456,6 +477,8 @@ function back() {
             }, 100);
         }
         if (mid.src.includes(tp2)) {
+            gameSFX.src = sfxSrc[2];
+            gameSFX.play();
             setTimeout(() => {
                 nwy = 0;
                 nwx = 7;
@@ -487,13 +510,6 @@ function back() {
             }, 100);
 
         }
-        if (mid.src.includes(win)) {
-            setTimeout(() => {
-                alert('You Win!');
-                location.reload();
-            }, 100);
-
-        }
     }
 
 
@@ -502,7 +518,6 @@ document.addEventListener('keydown', function (event) {
         rot = 3;
         arrow.style.transform = 'rotate(270deg)';
         player.style.transform = 'rotate(270deg)';
-        console.log('left pressed');
     } else if (event.key == 'ArrowUp') {
         rot = 0;
         arrow.style.transform = 'rotate(0deg)';
