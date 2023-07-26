@@ -1,3 +1,10 @@
+const walkButton = document.getElementById('walkButton');
+const backButton = document.getElementById('backButton');
+backButton.disabled = true;
+walkButton.disabled = true;
+var moves = 0;
+const movesIndicator = document.getElementById('movesIndicator');
+
 //--------------dice-roller--------------
 
 const audio = new Audio();
@@ -38,17 +45,18 @@ function go(sides) {
     audio.currentTime = 0;
     audio.play();
 
-    // console.log(typeof Number(multiplier));
-    // console.log(typeof multiplier.innerHTML);
-
     for (let i = 0; i < multiplier.innerHTML; i++) {
         var result = sides.roll();
         console.log(result);
-        llor = llor + result;
+        llor =+ result;
     }
 
     print(llor);
     printButton(llor);
+    walkButton.disabled = false;
+    moves ++;
+    movesIndicator.innerHTML = 'Moves: '+moves;
+
 }
 
 //--------------tile-types--------------
@@ -157,193 +165,206 @@ function arrowTate() {
 
 //--------------walk--------------
 
+
 const gameSFX = new Audio();
-const sfxSrc = ['audio/win.mp3', 'audio/lose.wav', 'audio/tp.mp3'];
+const sfxSrc = ['audio/win.mp3', 'audio/lose.mp3', 'audio/tp.mp3'];
 
 function walk() {
+    let count = 0;
 
-    if (rot == 0) {
-        if (ny < 1) { }
-        else {
-            nwy -= llor;
-            northw.src = map[nwy][nwx];
-            ny -= llor;
-            north.src = map[ny][nx];
-            ney -= llor;
-            northe.src = map[ney][nex];
-            wy -= llor;
-            west.src = map[wy][wx];
-            my -= llor;
-            mid.src = map[my][mx];
-            ey -= llor;
-            east.src = map[ey][ex];
-            swy -= llor;
-            southw.src = map[swy][swx];
-            sy -= llor;
-            south.src = map[sy][sx];
-            sey -= llor;
-            southe.src = map[sey][sex];
+    while(count < llor){ 
+            if (rot == 0) {
+                if (ny < 1) { }
+                else {
+                    nwy --;
+                    northw.src = map[nwy][nwx];
+                    ny --;
+                    north.src = map[ny][nx];
+                    ney --;
+                    northe.src = map[ney][nex];
+                    wy --;
+                    west.src = map[wy][wx];
+                    my --;
+                    mid.src = map[my][mx];
+                    ey --;
+                    east.src = map[ey][ex];
+                    swy --;
+                    southw.src = map[swy][swx];
+                    sy --;
+                    south.src = map[sy][sx];
+                    sey --;
+                    southe.src = map[sey][sex];
+                }
+            }
+            if (rot == 1) {
+                if (ex > 9) { }
+                else {
+                    nwx ++;
+                    northw.src = map[nwy][nwx];
+                    nx ++;
+                    north.src = map[ny][nx];
+                    nex ++;
+                    northe.src = map[ney][nex];
+                    wx ++;
+                    west.src = map[wy][wx];
+                    mx ++;
+                    mid.src = map[my][mx];
+                    ex ++;
+                    east.src = map[ey][ex];
+                    swx ++;
+                    southw.src = map[swy][swx];
+                    sx ++;
+                    south.src = map[sy][sx];
+                    sex ++;
+                    southe.src = map[sey][sex];
+                }
+            }
+            if (rot == 2) {
+                if (sy > 9) { }
+                else {
+                    nwy ++;
+                    northw.src = map[nwy][nwx];
+                    ny ++;
+                    north.src = map[ny][nx];
+                    ney ++;
+                    northe.src = map[ney][nex];
+                    wy ++;
+                    west.src = map[wy][wx];
+                    my ++;
+                    mid.src = map[my][mx];
+                    ey ++;
+                    east.src = map[ey][ex];
+                    swy ++;
+                    southw.src = map[swy][swx];
+                    sy ++;
+                    south.src = map[sy][sx];
+                    sey ++;
+                    southe.src = map[sey][sex];
+                }
+            }
+            if (rot == 3) {
+                if (wx < 1) { }
+                else {
+                    nwx --;
+                    northw.src = map[nwy][nwx];
+                    nx --;
+                    north.src = map[ny][nx];
+                    nex --;
+                    northe.src = map[ney][nex];
+                    wx --;
+                    west.src = map[wy][wx];
+                    mx --;
+                    mid.src = map[my][mx];
+                    ex --;
+                    east.src = map[ey][ex];
+                    swx --;
+                    southw.src = map[swy][swx];
+                    sx --;
+                    south.src = map[sy][sx];
+                    sex --;
+                    southe.src = map[sey][sex];
+                }
+            }
+            if (mid.src.includes(grass)) {
+                walkButton.disabled = true;
+                backButton.disabled = true;
+                gameSFX.src = sfxSrc[1];
+                gameSFX.play();
+                setTimeout ( function(){
+                    alert('Game Over. Stay determined...');
+                    location.reload();
+                }, 500);
+            }
+            if (mid.src.includes(tp)) {
+                gameSFX.src = sfxSrc[2];
+                gameSFX.play();
+                setTimeout(() => {
+                    nwy = 7;
+                    nwx = 1;
+                    northw.src = map[nwy][nwx];
+                    ny = 7;
+                    nx = 2;
+                    north.src = map[ny][nx];
+                    ney = 7;
+                    nex = 3;
+                    northe.src = map[ney][nex];
+                    wy = 8;
+                    wx = 1;
+                    west.src = map[wy][wx];
+                    my = 8;
+                    mx = 2;
+                    mid.src = map[my][mx];
+                    ey = 8;
+                    ex = 3;
+                    east.src = map[ey][ex];
+                    swy = 9;
+                    swx = 1;
+                    southw.src = map[swy][swx];
+                    sy = 9;
+                    sx = 2;
+                    south.src = map[sy][sx];
+                    sey = 9;
+                    sex = 3;
+                    southe.src = map[sey][sex];
+                }, 100);
+            }
+            if (mid.src.includes(tp2)) {
+                gameSFX.src = sfxSrc[2];
+                gameSFX.play();
+                setTimeout(() => {
+                    nwy = 0;
+                    nwx = 7;
+                    northw.src = map[nwy][nwx];
+                    ny = 0;
+                    nx = 8;
+                    north.src = map[ny][nx];
+                    ney = 0;
+                    nex = 9;
+                    northe.src = map[ney][nex];
+                    wy = 1;
+                    wx = 7;
+                    west.src = map[wy][wx];
+                    my = 1;
+                    mx = 8;
+                    mid.src = map[my][mx];
+                    ey = 1;
+                    ex = 9;
+                    east.src = map[ey][ex];
+                    swy = 2;
+                    swx = 7;
+                    southw.src = map[swy][swx];
+                    sy = 2;
+                    sx = 8;
+                    south.src = map[sy][sx];
+                    sey = 2;
+                    sex = 9;
+                    southe.src = map[sey][sex];
+                }, 100);
+        
+            }
+            if (mid.src.includes(win)) {
+                gameSFX.src = sfxSrc[0];
+                gameSFX.play();
+        
+                setTimeout ( function(){
+                    alert('You Win!');
+                    location.reload();
+                }, 1500);
+            }
+            if (my > 9 || my < 1 || mx > 9 || mx < 1){location.reload()}
+            backButton.disabled = false;
+            walkButton.disabled = true;
+            
+            count++;
         }
+        moves ++;
+        movesIndicator.innerHTML = 'Moves: '+moves;
     }
-    if (rot == 1) {
-        if (ex > 9) { }
-        else {
-            nwx += llor;
-            northw.src = map[nwy][nwx];
-            nx += llor;
-            north.src = map[ny][nx];
-            nex += llor;
-            northe.src = map[ney][nex];
-            wx += llor;
-            west.src = map[wy][wx];
-            mx += llor;
-            mid.src = map[my][mx];
-            ex += llor;
-            east.src = map[ey][ex];
-            swx += llor;
-            southw.src = map[swy][swx];
-            sx += llor;
-            south.src = map[sy][sx];
-            sex += llor;
-            southe.src = map[sey][sex];
-        }
-    }
-    if (rot == 2) {
-        if (sy > 9) { }
-        else {
-            nwy += llor;
-            northw.src = map[nwy][nwx];
-            ny += llor;
-            north.src = map[ny][nx];
-            ney += llor;
-            northe.src = map[ney][nex];
-            wy += llor;
-            west.src = map[wy][wx];
-            my += llor;
-            mid.src = map[my][mx];
-            ey += llor;
-            east.src = map[ey][ex];
-            swy += llor;
-            southw.src = map[swy][swx];
-            sy += llor;
-            south.src = map[sy][sx];
-            sey += llor;
-            southe.src = map[sey][sex];
-        }
-    }
-    if (rot == 3) {
-        if (wx < 1) { }
-        else {
-            nwx -= llor;
-            northw.src = map[nwy][nwx];
-            nx -= llor;
-            north.src = map[ny][nx];
-            nex -= llor;
-            northe.src = map[ney][nex];
-            wx -= llor;
-            west.src = map[wy][wx];
-            mx -= llor;
-            mid.src = map[my][mx];
-            ex -= llor;
-            east.src = map[ey][ex];
-            swx -= llor;
-            southw.src = map[swy][swx];
-            sx -= llor;
-            south.src = map[sy][sx];
-            sex -= llor;
-            southe.src = map[sey][sex];
-        }
-    }
-    if (mid.src.includes(grass)) {
-        gameSFX.src = sfxSrc[1];
-        gameSFX.play();
-        setTimeout ( function(){
-            alert('Game Over. Stay determined...');
-            location.reload();
-        }, 500);
-    }
-    if (mid.src.includes(tp)) {
-        gameSFX.src = sfxSrc[2];
-        gameSFX.play();
-        setTimeout(() => {
-            nwy = 7;
-            nwx = 1;
-            northw.src = map[nwy][nwx];
-            ny = 7;
-            nx = 2;
-            north.src = map[ny][nx];
-            ney = 7;
-            nex = 3;
-            northe.src = map[ney][nex];
-            wy = 8;
-            wx = 1;
-            west.src = map[wy][wx];
-            my = 8;
-            mx = 2;
-            mid.src = map[my][mx];
-            ey = 8;
-            ex = 3;
-            east.src = map[ey][ex];
-            swy = 9;
-            swx = 1;
-            southw.src = map[swy][swx];
-            sy = 9;
-            sx = 2;
-            south.src = map[sy][sx];
-            sey = 9;
-            sex = 3;
-            southe.src = map[sey][sex];
-        }, 100);
-    }
-    if (mid.src.includes(tp2)) {
-        gameSFX.src = sfxSrc[2];
-        gameSFX.play();
-        setTimeout(() => {
-            nwy = 0;
-            nwx = 7;
-            northw.src = map[nwy][nwx];
-            ny = 0;
-            nx = 8;
-            north.src = map[ny][nx];
-            ney = 0;
-            nex = 9;
-            northe.src = map[ney][nex];
-            wy = 1;
-            wx = 7;
-            west.src = map[wy][wx];
-            my = 1;
-            mx = 8;
-            mid.src = map[my][mx];
-            ey = 1;
-            ex = 9;
-            east.src = map[ey][ex];
-            swy = 2;
-            swx = 7;
-            southw.src = map[swy][swx];
-            sy = 2;
-            sx = 8;
-            south.src = map[sy][sx];
-            sey = 2;
-            sex = 9;
-            southe.src = map[sey][sex];
-        }, 100);
 
-    }
-    if (mid.src.includes(win)) {
-        gameSFX.src = sfxSrc[0];
-        gameSFX.play();
-
-        setTimeout ( function(){
-            alert('You Win!');
-            location.reload();
-        }, 1500);
-    }
-
-};
 
 function back() {
 
-        if (rot == 0) {
+    if (rot == 0) {
             if (sy > 9) { }
             else {
                 nwy++;
@@ -365,8 +386,8 @@ function back() {
                 sey++
                 southe.src = map[sey][sex];
             }
-        }
-        if (rot == 1) {
+    }
+    if (rot == 1) {
             if (wx < 1) { }
             else {
                 nwx--;
@@ -388,8 +409,8 @@ function back() {
                 sex--;
                 southe.src = map[sey][sex];
             }
-        }
-        if (rot == 2) {
+    }
+    if (rot == 2) {
             if (ny < 1 || north.src.includes(win)) { }
             else {
                 nwy--;
@@ -411,8 +432,8 @@ function back() {
                 sey--;
                 southe.src = map[sey][sex];
             }
-        }
-        if (rot == 3) {
+    }
+    if (rot == 3) {
             if (ex > 9) { }
             else {
                 nwx++;
@@ -434,16 +455,18 @@ function back() {
                 sex++;
                 southe.src = map[sey][sex];
             }
-        }
-        if (mid.src.includes(grass)) {
+    }
+    if (mid.src.includes(grass)) {
+            walkButton.disabled = true;
+            backButton.disabled = true;
             gameSFX.src = sfxSrc[1];
             gameSFX.play();
             setTimeout ( function(){
             alert('Game Over. Stay determined...');
             location.reload();
         }, 500);
-        }
-        if (mid.src.includes(tp)) {
+    }
+    if (mid.src.includes(tp)) {
             gameSFX.src = sfxSrc[2];
             gameSFX.play();
             setTimeout(() => {
@@ -475,8 +498,8 @@ function back() {
                 sex = 3;
                 southe.src = map[sey][sex];
             }, 100);
-        }
-        if (mid.src.includes(tp2)) {
+    }
+    if (mid.src.includes(tp2)) {
             gameSFX.src = sfxSrc[2];
             gameSFX.play();
             setTimeout(() => {
@@ -510,6 +533,10 @@ function back() {
             }, 100);
 
         }
+        backButton.disabled = true;
+        moves ++;
+        movesIndicator.innerHTML = 'Moves: '+moves;
+
     }
 
 
@@ -532,7 +559,7 @@ document.addEventListener('keydown', function (event) {
         player.style.transform = 'rotate(180deg)';
     } else if (event.key == '0') {
         walk(1);
-        console.log('sucesso');
     }
 }
 )
+

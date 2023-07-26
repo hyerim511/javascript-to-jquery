@@ -28,17 +28,15 @@ body {
 }
 
 .grid {
-    display: grid;
-    grid-template-columns: auto auto auto;
+    display: flex;
+    flex-direction: column;
     gap: 10px;
 }
 
 [class*="dice"] {
-    height: 60px;
-    width: 60px;
-    background-color: var(--color1);
+    height: 200px;
+    width: 200px;
     padding: 5px;
-    border: 2px solid black;
     cursor: pointer;
     user-select: none;
 } 
@@ -55,8 +53,6 @@ body {
     background-color: var(--color1);
     border: 2px solid black;
     align-items: center;
-    grid-column-start: 2;
-    grid-column-end: 4;
 }
 
 #xn {
