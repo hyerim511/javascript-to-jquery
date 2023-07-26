@@ -4,7 +4,7 @@
     --hh: 10vh;
     --fh: 10vh;
     --backColor: #77c700;
-    --brown: #5C3401;
+    --brown: rgb(65, 24, 0);
 }
 
 body {
@@ -36,12 +36,21 @@ header {
 header h1 {
     font-family: 'Alfa Slab One', cursive;
     font-size: 5rem;
-    color: #5C3401;
+    color: var(--brown);
     text-shadow: 5px 5px rgb(255, 106, 106);
 }
 
 footer {
     height: var(--fh);
+    display: flex;
+    background-color: black;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2%;
+}
+
+.copyright {
+    color: grey;
 }
 
 /*  */
@@ -57,29 +66,62 @@ footer {
 }
 
 .container {
-    background-color: var(--backColor);
+    background-color: var(--brown);
     border: none;
-    width: 240px;
+    width: 300px;
+    height: 500px;
+    margin: 0;
+    gap: 10px;
+    justify-content: center;
 }
 
 #phc {
-    background-color: white;
+    background-color: transparent;
     width: 100%;
     border: none;
+    color: white;
+    line-height: 1.5;
+    padding: 0;
 }
 
-[class*="dice"],
+#placeholder {
+    font-size: 4rem;
+}
+
+#rollButton {
+    background-color: white;
+}
+
+[class*="dice"] {
+    width: 70%;
+    object-fit: contain;
+}
+
 #multi {
-    background-color: rgb(138, 208, 255);
+    background-color: rgb(255, 108, 203);
     border: none;
     filter:invert();
+    justify-content: space-around;
 }
 
 [class*="dice"]:hover {
-    transform: translateY(-4px);
+    transform: rotate(15deg);
+    background-color: transparent;
 }
 
-.btnGroup {
+.controls {
+    background-color: var(--brown);
+    font-family: inherit;
+    width: 300px;
+    height: 500px;
+}
+
+.controls p {
+    color: white;
+    text-transform: uppercase;
+}
+
+#controls1 {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -88,18 +130,17 @@ footer {
     width: 240px;
 }
 
-#walkButton {
+#controls1 button {
     height: fit-content;
     padding: 6%;
     border: none;
     background-color: var(--backColor);
     border-radius: 10vw;
     width: 100%;
-    box-shadow: 0 4px var(--brown);
 }
 
-#walkButton:hover {
-    box-shadow: 0 2px var(--brown);
+#controls1 button:hover {
+    background-color: #1fb900;
 }
 
 #arrow {
@@ -109,6 +150,96 @@ footer {
     padding: 10px;
     object-fit: contain;
     border-radius: 50%;
-    background-color: rgb(138, 208, 255);
-    filter:invert();
+    /* background-color: rgb(255, 108, 203);
+    filter:invert(); */
+}
+
+#imgTarget {
+    filter: invert(40%);
+}
+
+
+@media (max-width: 700px) {
+
+    header {
+        height: auto;
+    }
+
+    header h1 {
+        font-size: 4rem;
+    }
+    
+    .game {
+        /* flex-direction: column; */
+        flex-wrap: wrap;
+        height: 100%;
+        column-gap: 0;
+    }
+
+    .fov {
+        scale: 100%;
+        order: 1;
+    }
+
+    .container {
+        order: 2;
+        width: 44vw;
+        height: 300px;
+    }
+
+    [class*="dice"] {
+        height: 100%;
+    }
+
+    .controls {
+        order: 3;
+        width: 44vw;
+        height: 300px;
+    }
+
+    #controls1 {
+        width: 40vw;
+    }
+
+    #controls1 button {
+        width: 80%;
+    }
+
+    .tooltipBlock {
+        width: 200px;
+        position: fixed;
+        right: -10vw;
+        bottom: 15vh;
+    }
+
+    #imgTarget, #imgPop {
+        background-color: rgb(255, 106, 106);
+        filter: none;
+        padding: 3%;
+        border-radius: 50%;
+    }
+
+    footer {
+        flex-direction: column;
+        padding: 10% 2%;
+        height: auto;
+        gap: 20px;
+    }
+
+    .copyright {
+        order: 2;
+    }
+
+    .music {
+        order: 1;
+        flex-direction: column;
+        width: 80%;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .music-info {
+        padding: 2%;
+    }
+
 }

@@ -43,6 +43,8 @@ let trackList = [
 // Play music
 let trackNum = 0;
 musicPlay.addEventListener('click', ()=>{
+    musicPause.style.display = "block";
+    musicPlay.style.display = "none";
     playMusic.src = trackList[trackNum].path;
     playMusic.play();
     musicTitle.innerHTML = trackList[trackNum].title;
@@ -60,6 +62,8 @@ musicPlay.addEventListener('click', ()=>{
 
 // Pause music
 musicPause.addEventListener('click', ()=>{
+    musicPause.style.display = "none";
+    musicPlay.style.display = "block";
     playMusic.pause();
 });
 
@@ -73,6 +77,8 @@ musicBackward.addEventListener('click', ()=>{
     playMusic.play();
     musicTitle.innerHTML = trackList[trackNum].title;
     musicArtist.innerHTML = trackList[trackNum].artist;
+    musicPause.style.display = "block";
+    musicPlay.style.display = "none";
 });
 
 // Play next music
@@ -85,6 +91,8 @@ musicForward.addEventListener('click', ()=>{
     playMusic.play();
     musicTitle.innerHTML = trackList[trackNum].title;
     musicArtist.innerHTML = trackList[trackNum].artist;
+    musicPause.style.display = "block";
+    musicPlay.style.display = "none";
 });
 
 // Function to make shuffled array
@@ -96,27 +104,36 @@ function shuffle(array) {
 let shuffleBool = false;
 musicShuffle.addEventListener('click', ()=>{
 
-    let testArr = [];
+    let shuffArr = [];
     let tempNum = 0;
     for(var i=1; i<trackList.length+1; i++){
-        testArr.push(i);
+        shuffArr.push(i);
     }
-
+    // Toggle the shuffle button
     shuffleBool = !shuffleBool;
 
     if(shuffleBool) {
-        shuffle(testArr);
-        musicShuffle.style.backgroundColor = "#666";
-    } 
-    // tempNum = Math.floor(Math.random() * (testArr.length + 1));
-    playMusic.src = trackList[testArr[tempNum]].path;
+        shuffle(shuffArr);
+        musicShuffle.style.backgroundColor = "#77c700";
+        musicShuffle.style.color = "black";
+    } else {
+        musicShuffle.style.backgroundColor = "#242424";
+        musicShuffle.style.color = "#77c700";
+    }
+    console.log(shuffArr);
+    // tempNum = Math.floor(Math.random() * (shuffArr.length + 1));
+    playMusic.src = trackList[shuffArr[tempNum]].path;
     playMusic.play();
-    musicTitle.innerHTML = trackList[testArr[tempNum]].title;
+    musicTitle.innerHTML = trackList[shuffArr[tempNum]].title;
+    musicArtist.innerHTML = trackList[shuffArr[tempNum]].artist;
+    musicPause.style.display = "block";
+    musicPlay.style.display = "none";
     playMusic.addEventListener('ended', ()=>{
         tempNum++;
-        playMusic.src = trackList[testArr[tempNum]].path;
+        playMusic.src = trackList[shuffArr[tempNum]].path;
         playMusic.play();
-        musicTitle.innerHTML = trackList[testArr[tempNum]].title;
+        musicTitle.innerHTML = trackList[shuffArr[tempNum]].title;
+        musicArtist.innerHTML = trackList[shuffArr[tempNum]].artist;
     })
 });
 
