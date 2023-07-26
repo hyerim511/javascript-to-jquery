@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+
+.btnContain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    padding: 2%;
+    background-color: white;
+    text-align: center;
+}
+
+header h1 {
+    font-family: 'Alfa Slab One', cursive;
+}
+
+footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}

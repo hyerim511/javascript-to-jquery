@@ -10,55 +10,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="dice-roller.css">
+    <link rel="stylesheet" href="chinatsu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/music.css">
+    <link rel="stylesheet" href="css/layout.css">
 </head>
 
 <body>
+    <header>
+        <h1>Realm of the Rolling Knight</h1>
+    </header>
 
-    <div class="container">
+    <section class="game">
+        <div class="container">
 
-        <div id="phc">
-            <h1>Roll:</h1>
-            <p id="placeholder"></p>
+            <div id="phc">
+                <h1>Roll:</h1>
+                <p id="placeholder"></p>
+            </div>
+    
+            <div class="grid">
+                <img class="dice1" src="imgs/d4.png" onclick="go(d4)">
+                <img class="dice2" src="imgs/d6.png" onclick="go(d6)">
+                <img class="dice3" src="imgs/d8.png" onclick="go(d8)">
+                <img class="dice4" src="imgs/d10.png" onclick="go(d10)">
+                <img class="dice5" src="imgs/d12.png" onclick="go(d12)">
+                <img class="dice6" src="imgs/d20.png" onclick="go(d20)">
+                <img class="dice7" src="imgs/d100.png" onclick="go(d100)">
+                <div id="multi">
+                    <img onclick="mtplr()" src="imgs/plus.png" height="20px">
+                    <div id="mbox">
+                        <p id="ecs">x</p>
+                        <span id="multiplier">1</span>
+                    </div>
+                    <img onclick="reset()" id="reload" src="imgs/reload.png" height="20px">
+                </div>
+            </div>
+    
+        </div>
+    
+        <div class="fov">
+            <img id="tile1">
+            <img id="tile2">
+            <img id="tile3">
+            <img id="tile4">
+            <div id="middleTile"><img id="tile5"><img id="player" src="imgs/player.png" alt="player"></div>
+            <img id="tile6">
+            <img id="tile7">
+            <img id="tile8">
+            <img id="tile9">
         </div>
 
-        <div class="grid">
-            <img class="dice1" src="imgs/d4.png" onclick="go(d4)">
-            <img class="dice2" src="imgs/d6.png" onclick="go(d6)">
-            <img class="dice3" src="imgs/d8.png" onclick="go(d8)">
-            <img class="dice4" src="imgs/d10.png" onclick="go(d10)">
-            <img class="dice5" src="imgs/d12.png" onclick="go(d12)">
-            <img class="dice6" src="imgs/d20.png" onclick="go(d20)">
-            <img class="dice7" src="imgs/d100.png" onclick="go(d100)">
-            <div id="multi">
-                <img onclick="mtplr()" src="imgs/plus.png" height="20px">
-                <div id="mbox">
-                    <p id="ecs">x</p>
-                    <span id="multiplier">1</span>
+        <div class="btnContain">
+            <!-- BUTTONS FOR THE GAME -->
+            <div class="btnGroup">
+                <img onclick="arrowTate()" id="arrow" src="imgs/arrow.png" alt="arrow" height="50px">
+            
+                <button id="walkButton" onclick="walk()">Walk</button>
+                <button id="walkButton" onclick="back()">Back</button>
+    
+            </div>
+            <!-- TOOLTIP -->
+            <div class="tooltipBlock">
+                <li id="toolTip">
+                    <ul>This is a tooltip.</ul> 
+                    <ul>This is a hint.</ul>
+                    <ul>This is a question?</ul>
+                </li>
+                <div class="tool-imgs">
+                    <img id="imgTarget" src="question.png" alt="">
+                    <img id="imgPop" src="question-light.png" alt="">
                 </div>
-                <img onclick="reset()" id="reload" src="imgs/reload.png" height="20px">
             </div>
         </div>
-
-    </div>
-
-    <div class="fov">
-        <img id="tile1">
-        <img id="tile2">
-        <img id="tile3">
-        <img id="tile4">
-        <div id="middleTile"><img id="tile5"><img id="player" src="imgs/player.png" alt="player"></div>
-        <img id="tile6">
-        <img id="tile7">
-        <img id="tile8">
-        <img id="tile9">
-    </div>
-
-    <img onclick="arrowTate()" id="arrow" src="imgs/arrow.png" alt="arrow" height="50px">
-
-    <button id="walkButton" onclick="walk()">Walk</button>
-    <button id="walkButton" onclick="back()">Back</button>
+    </section>
+    
+    <footer>
+        <section class="music">
+            <div class="music-info">
+                <p id="music-title">TITLE</p>
+                <small id="music-artist">ARTIST</small>
+            </div>
+            <div class="music-control">
+                <button id="music-backward">
+                    <i class="fa-solid fa-backward"></i>
+                </button>
+                <button id="music-play">
+                    <i class="fa-solid fa-play"></i>
+                </button>
+                <button id="music-pause">
+                    <i class="fa-solid fa-pause"></i>
+                </button>
+                <button id="music-forward">
+                    <i class="fa-solid fa-forward"></i>
+                </button>
+                <button id="music-shuffle">
+                    <i class="fa-solid fa-shuffle"></i>
+                </button>
+            </div>
+        </section>
+    </footer>
 
     <script src="script.js" async defer></script>
+    <script src="chinatsu.js"></script>
+    <script src="js/music.js"></script>
 </body>
 
 </html>
