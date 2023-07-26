@@ -49,3 +49,33 @@
     font-size: large;
     font-weight: 600;
 }
+
+#backButton {
+    padding: 5px;
+    font-size: large;
+    font-weight: 600;
+}
+
+#rollButton {
+    background-color: #aeb5bb;
+    border: 2px solid black;
+}
+
+#movesIndicator {
+    font-size: large;
+    font-weight: 700;
+}
+
+.controls {
+    display: flex;
+    width: 20vw;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px;
+    gap: 20px;
+    background-color: lightblue;
+}
+
+#controls1 {
+    align-items: center;
+}

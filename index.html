@@ -29,23 +29,19 @@
                 <p id="placeholder"></p>
             </div>
     
-            <div class="grid">
-                <img class="dice1" src="imgs/d4.png" onclick="go(d4)">
-                <img class="dice2" src="imgs/d6.png" onclick="go(d6)">
-                <img class="dice3" src="imgs/d8.png" onclick="go(d8)">
-                <img class="dice4" src="imgs/d10.png" onclick="go(d10)">
-                <img class="dice5" src="imgs/d12.png" onclick="go(d12)">
-                <img class="dice6" src="imgs/d20.png" onclick="go(d20)">
-                <img class="dice7" src="imgs/d100.png" onclick="go(d100)">
-                <div id="multi">
-                    <img onclick="mtplr()" src="imgs/plus.png" height="20px">
-                    <div id="mbox">
-                        <p id="ecs">x</p>
-                        <span id="multiplier">1</span>
-                    </div>
-                    <img onclick="reset()" id="reload" src="imgs/reload.png" height="20px">
+        <div class="grid">
+            <button id="rollButton" onclick="go(d4)"><img class="dice1" src="imgs/d4.png"></button>
+
+            <div id="multi">
+                <img onclick="mtplr()" src="imgs/plus.png" height="20px">
+                <div id="mbox">
+                    <p id="ecs">x</p>
+                    <span id="multiplier">1</span>
                 </div>
+                <img onclick="reset()" id="reload" src="imgs/reload.png" height="20px">
             </div>
+        </div>
+
     
         </div>
     
@@ -63,13 +59,15 @@
 
         <div class="btnContain">
             <!-- BUTTONS FOR THE GAME -->
-            <div class="btnGroup">
+            <div class="controls">
+            <div id="controls1">
                 <img onclick="arrowTate()" id="arrow" src="imgs/arrow.png" alt="arrow" height="50px">
-            
                 <button id="walkButton" onclick="walk()">Walk</button>
-                <button id="walkButton" onclick="back()">Back</button>
-    
-            </div>
+                <button id="backButton" onclick="back()">Back</button>
+            </div>        
+
+            <p id="movesIndicator">Moves: 0</p>
+        </div>
             <!-- TOOLTIP -->
             <div class="tooltipBlock">
                 <ul id="toolTip">
