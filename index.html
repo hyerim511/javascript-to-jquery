@@ -10,17 +10,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="dice-roller.css">
+    <link rel="stylesheet" href="css/chinatsu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/music.css">
+    <link rel="stylesheet" href="css/layout.css">
 </head>
 
 <body>
+    <header>
+        <h1>Realm of the Rolling Knight</h1>
+    </header>
 
-    <div class="container">
+    <section class="game">
+        <div class="container">
 
-        <div id="phc">
-            <h1>Roll:</h1>
-            <p id="placeholder"></p>
-        </div>
-
+            <div id="phc">
+                <h1>Roll:</h1>
+                <p id="placeholder"></p>
+            </div>
+    
         <div class="grid">
             <button id="rollButton" onclick="go(d4)"><img class="dice1" src="imgs/d4.png"></button>
 
@@ -34,32 +42,76 @@
             </div>
         </div>
 
-    </div>
-
-    <div class="fov">
-        <img id="tile1">
-        <img id="tile2">
-        <img id="tile3">
-        <img id="tile4">
-        <div id="middleTile"><img id="tile5"><img id="player" src="imgs/player.png" alt="player"></div>
-        <img id="tile6">
-        <img id="tile7">
-        <img id="tile8">
-        <img id="tile9">
-    </div>
-
-    <div class="controls">
-        <div id="controls1">
-            <img onclick="arrowTate()" id="arrow" src="imgs/arrow.png" alt="arrow" height="50px">
-            <button id="walkButton" onclick="walk()">Walk</button>
-            <button id="backButton" onclick="back()">Back</button>
-        </div>        
-
-        <p id="movesIndicator">Moves: 0</p>
-    </div>
     
+        </div>
+    
+        <div class="fov">
+            <img id="tile1">
+            <img id="tile2">
+            <img id="tile3">
+            <img id="tile4">
+            <div id="middleTile"><img id="tile5"><img id="player" src="imgs/player.png" alt="player"></div>
+            <img id="tile6">
+            <img id="tile7">
+            <img id="tile8">
+            <img id="tile9">
+        </div>
+
+        <div class="btnContain">
+            <!-- BUTTONS FOR THE GAME -->
+            <div class="controls">
+            <div id="controls1">
+                <img onclick="arrowTate()" id="arrow" src="imgs/arrow.png" alt="arrow" height="50px">
+                <button id="walkButton" onclick="walk()">Walk</button>
+                <button id="backButton" onclick="back()">Back</button>
+            </div>        
+
+            <p id="movesIndicator">Moves: 0</p>
+        </div>
+            <!-- TOOLTIP -->
+            <div class="tooltipBlock">
+                <ul id="toolTip">
+                    <li><span class="spanbold">Brown</span> : WALK</li> 
+                    <li><span class="spanbold">Blue&Orange</span> : WARP</li>
+                    <li><span class="spanbold">Yellow</span> : GOAL</li>
+                </ul>
+                <div class="tool-imgs">
+                    <img id="imgTarget" src="imgs/question.png" alt="">
+                    <img id="imgPop" src="imgs/question-light.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <section class="music">
+            <div class="music-info">
+                <p id="music-title">TITLE</p>
+                <small id="music-artist">ARTIST</small>
+            </div>
+            <div class="music-control">
+                <button id="music-backward">
+                    <i class="fa-solid fa-backward"></i>
+                </button>
+                <button id="music-play">
+                    <i class="fa-solid fa-play"></i>
+                </button>
+                <button id="music-pause">
+                    <i class="fa-solid fa-pause"></i>
+                </button>
+                <button id="music-forward">
+                    <i class="fa-solid fa-forward"></i>
+                </button>
+                <button id="music-shuffle">
+                    <i class="fa-solid fa-shuffle"></i>
+                </button>
+            </div>
+        </section>
+    </footer>
 
     <script src="script.js" async defer></script>
+    <script src="js/chinatsu.js"></script>
+    <script src="js/music.js"></script>
 </body>
 
 </html>

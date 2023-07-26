@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+
+:root {
+    --hh: 10vh;
+    --fh: 10vh;
+    --backColor: #77c700;
+    --brown: #5C3401;
+}
+
+body {
+    background-color: rgb(221, 255, 170);
+}
+
+.btnContain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    padding: 2%;
+    height: var(--hh);
+    /* background-color: white; */
+    text-align: center;
+}
+
+.game {
+    height: calc(100vh - (var(--hh) + var(--fh)));
+}
+
+header h1 {
+    font-family: 'Alfa Slab One', cursive;
+    font-size: 5rem;
+    color: #5C3401;
+    text-shadow: 5px 5px rgb(255, 106, 106);
+}
+
+footer {
+    height: var(--fh);
+}
+
+/*  */
+
+.game {
+    display: flex;
+    justify-content: space-around;
+}
+
+.fov {
+    margin: 0;
+    background-color: var(--backColor);
+}
+
+.container {
+    background-color: var(--backColor);
+    border: none;
+    width: 240px;
+}
+
+#phc {
+    background-color: white;
+    width: 100%;
+    border: none;
+}
+
+[class*="dice"],
+#multi {
+    background-color: rgb(138, 208, 255);
+    border: none;
+    filter:invert();
+}
+
+[class*="dice"]:hover {
+    transform: translateY(-4px);
+}
+
+.btnGroup {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    width: 240px;
+}
+
+#walkButton {
+    height: fit-content;
+    padding: 6%;
+    border: none;
+    background-color: var(--backColor);
+    border-radius: 10vw;
+    width: 100%;
+    box-shadow: 0 4px var(--brown);
+}
+
+#walkButton:hover {
+    box-shadow: 0 2px var(--brown);
+}
+
+#arrow {
+    background-color: white;
+    width: 70px;
+    height: 70px;
+    padding: 10px;
+    object-fit: contain;
+    border-radius: 50%;
+    background-color: rgb(138, 208, 255);
+    filter:invert();
+}
