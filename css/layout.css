@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
 
 :root {
-    --hh: 10vh;
+    --hh: 130px;
     --fh: 10vh;
     --backColor: #77c700;
     --brown: rgb(65, 24, 0);
 }
 
 body {
-    background-color: rgb(221, 255, 170);
+    background-color: rgb(241, 255, 170);
 }
 
 .btnContain {
@@ -25,12 +25,11 @@ body {
 header {
     padding: 2%;
     height: var(--hh);
-    /* background-color: white; */
     text-align: center;
 }
 
 .game {
-    height: calc(100vh - (var(--hh) + var(--fh)));
+    height: calc(100vh - 130px - 10vh);
 }
 
 header h1 {
@@ -46,14 +45,14 @@ footer {
     background-color: black;
     align-items: center;
     justify-content: space-between;
-    padding: 0 2%;
+    padding: 1% 2%;
 }
 
 .copyright {
     color: grey;
 }
 
-/*  */
+/* Change Layout and style */
 
 .game {
     display: flex;
@@ -150,8 +149,6 @@ footer {
     padding: 10px;
     object-fit: contain;
     border-radius: 50%;
-    /* background-color: rgb(255, 108, 203);
-    filter:invert(); */
 }
 
 #imgTarget {
@@ -170,7 +167,6 @@ footer {
     }
     
     .game {
-        /* flex-direction: column; */
         flex-wrap: wrap;
         height: 100%;
         column-gap: 0;
@@ -241,5 +237,4 @@ footer {
     .music-info {
         padding: 2%;
     }
-
 }
