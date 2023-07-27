@@ -29,7 +29,8 @@ header {
 }
 
 .game {
-    height: calc(100vh - 130px - 10vh);
+    min-height: calc(100vh - 130px - 10vh);
+    height: 650px;
 }
 
 header h1 {
