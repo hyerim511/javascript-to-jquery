@@ -1,3 +1,4 @@
+// Variables for Music Player
 let musicTitle = document.getElementById('music-title');
 let musicArtist = document.getElementById('music-artist');
 let musicPlay = document.getElementById('music-play');
@@ -38,26 +39,27 @@ let trackList = [
     },
 ];
 
-
-
 // Play music
 let trackNum = 0;
+
+function setPlay(num){
+    playMusic.src = trackList[num].path;
+    musicTitle.innerHTML = trackList[num].title;
+    musicArtist.innerHTML = trackList[num].artist;
+}
+
 musicPlay.addEventListener('click', ()=>{
     musicPause.style.display = "block";
     musicPlay.style.display = "none";
-    playMusic.src = trackList[trackNum].path;
+    setPlay(trackNum);
     playMusic.play();
-    musicTitle.innerHTML = trackList[trackNum].title;
-    musicArtist.innerHTML = trackList[trackNum].artist;
-    playMusic();
-    playMusic.addEventListener('ended', ()=>{
-        trackNum++;
-        playMusic.src = trackList[trackNum].path;
-        playMusic.play();
-        musicTitle.innerHTML = trackList[trackNum].title;
-        musicArtist.innerHTML = trackList[trackNum].artist;
-    });
-    console.log(trackNum);
+});
+
+// Play next track when it's ended
+playMusic.addEventListener('ended', ()=>{
+    trackNum++;
+    setPlay(trackNum);
+    playMusic.play();
 });
 
 // Pause music
@@ -67,18 +69,16 @@ musicPause.addEventListener('click', ()=>{
     playMusic.pause();
 });
 
-// Play privious music
+// Play previous music
 musicBackward.addEventListener('click', ()=>{
     trackNum--;
     if(trackNum < 0) {
         trackNum = trackList.length;
     }
-    playMusic.src = trackList[trackNum].path;
-    playMusic.play();
-    musicTitle.innerHTML = trackList[trackNum].title;
-    musicArtist.innerHTML = trackList[trackNum].artist;
     musicPause.style.display = "block";
     musicPlay.style.display = "none";
+    setPlay(trackNum);
+    playMusic.play();
 });
 
 // Play next music
@@ -87,12 +87,10 @@ musicForward.addEventListener('click', ()=>{
     if(trackNum > trackList.length) {
         trackNum = 0;
     }
-    playMusic.src = trackList[trackNum].path;
-    playMusic.play();
-    musicTitle.innerHTML = trackList[trackNum].title;
-    musicArtist.innerHTML = trackList[trackNum].artist;
     musicPause.style.display = "block";
     musicPlay.style.display = "none";
+    setPlay(trackNum);
+    playMusic.play();
 });
 
 // Function to make shuffled array
@@ -103,15 +101,13 @@ function shuffle(array) {
 // Shuffle play list
 let shuffleBool = false;
 musicShuffle.addEventListener('click', ()=>{
-
     let shuffArr = [];
     let tempNum = 0;
-    for(var i=1; i<trackList.length+1; i++){
+    for(var i=0; i<trackList.length; i++){
         shuffArr.push(i);
     }
     // Toggle the shuffle button
     shuffleBool = !shuffleBool;
-
     if(shuffleBool) {
         shuffle(shuffArr);
         musicShuffle.style.backgroundColor = "#77c700";
@@ -120,20 +116,16 @@ musicShuffle.addEventListener('click', ()=>{
         musicShuffle.style.backgroundColor = "#242424";
         musicShuffle.style.color = "#77c700";
     }
-    console.log(shuffArr);
+    // console.log(shuffArr);
     // tempNum = Math.floor(Math.random() * (shuffArr.length + 1));
-    playMusic.src = trackList[shuffArr[tempNum]].path;
-    playMusic.play();
-    musicTitle.innerHTML = trackList[shuffArr[tempNum]].title;
-    musicArtist.innerHTML = trackList[shuffArr[tempNum]].artist;
     musicPause.style.display = "block";
     musicPlay.style.display = "none";
+    setPlay(shuffArr[tempNum]);
+    playMusic.play();
     playMusic.addEventListener('ended', ()=>{
         tempNum++;
-        playMusic.src = trackList[shuffArr[tempNum]].path;
+        setPlay(shuffArr[tempNum]);
         playMusic.play();
-        musicTitle.innerHTML = trackList[shuffArr[tempNum]].title;
-        musicArtist.innerHTML = trackList[shuffArr[tempNum]].artist;
     })
 });
 
