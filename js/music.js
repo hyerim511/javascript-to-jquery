@@ -44,8 +44,8 @@ let trackNum = 0;
 
 function setPlay(num){
     playMusic.src = trackList[num].path;
-    musicTitle.innerHTML = trackList[num].title;
-    musicArtist.innerHTML = trackList[num].artist;
+    musicTitle.innerHTML = trackList[num].title.toUpperCase();
+    musicArtist.innerHTML = trackList[num].artist.toLowerCase();
 }
 
 musicPlay.addEventListener('click', ()=>{
