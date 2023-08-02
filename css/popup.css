@@ -1,0 +1,32 @@
+.popup {
+    display: none;
+    position: absolute;
+    top: 200px;
+    right: calc(50% - 150px);
+    background-color: #26ff00;
+    height: 200px;
+    width: 300px;
+    padding: 20px;
+    z-index: 999;
+    align-items: center;
+    text-align: center;
+}
+
+.popup h1 {
+    font-weight: 900;
+    margin-top: 20px;
+}
+
+.filter {
+    display: none;
+    position: absolute;
+    height: 115vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+}
+
+.hide {
+    padding: 5px;
+    margin-top: 30px;
+}

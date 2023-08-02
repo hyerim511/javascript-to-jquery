@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.miniContainer {
+    margin-left: 50px;
+    
+}
+
+.col-lg-1 {
+    height: 25px;
+    width: auto;
+    border: 1px solid black;
+}
+
+.minimap {
+    position: fixed;
+    background-color: lightgreen;
+    padding-left: 10px;
+}
+
