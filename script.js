@@ -1,3 +1,12 @@
+$(document).ready(function(){
+    $('.filter').show();
+    $('#popup').show();
+    $(".hide").click(function(){
+        $(".filter").fadeToggle();
+        $("#popup").fadeToggle();
+    });
+});
+
 const walkButton = document.getElementById('walkButton');
 const backButton = document.getElementById('backButton');
 backButton.disabled = true;
@@ -63,7 +72,7 @@ function go(sides) {
 
 const grass = "imgs/grass.png";
 const path = "imgs/path.png";
-const black = "imgs/black.png"
+const black = "imgs/black.png";
 const tp = 'imgs/tp.png';
 const tp2 = 'imgs/tp2.png';
 const win = 'imgs/win.png';
@@ -85,6 +94,8 @@ const map = [
 ]
 
 //--------------tile-positions--------------
+
+var nw
 
 const northw = document.getElementById('tile1');
 var nwy = 4;
@@ -165,14 +176,38 @@ function arrowTate() {
 
 //--------------walk--------------
 
+function death(){
+    $('.filter').fadeToggle();
+    $('#deathMessage').fadeToggle();
+    $(".hide").click(function(){
+        location.reload();
+    });
+}
+
+function gWin(){
+    $('.filter').fadeToggle();
+    $('#winMessage').fadeToggle();
+    $(".hide").click(function(){
+        location.reload();
+    });
+}
 
 const gameSFX = new Audio();
 const sfxSrc = ['audio/win.mp3', 'audio/lose.mp3', 'audio/tp.mp3'];
+const step = new Audio();
+const steps = ['audio/steps/step0.mp3', 'audio/steps/step1.mp3', 'audio/steps/step2.mp3', 'audio/steps/step3.mp3', 'audio/steps/step4.mp3', 'audio/steps/step5.mp3', 'audio/steps/step6.mp3', 'audio/steps/step7.mp3', 'audio/steps/step8.mp3', 'audio/steps/step9.mp3', 'audio/steps/step10.mp3', 'audio/steps/step11.mp3']
+
 
 function walk() {
     let count = 0;
 
+    let stepsN = Math.floor(Math.random() * steps.length);
+    step.src = steps[stepsN];
+    step.currentTime = 0;
+    step.play();
+
     while(count < llor){ 
+
             if (rot == 0) {
                 if (ny < 1) { }
                 else {
@@ -270,10 +305,8 @@ function walk() {
                 backButton.disabled = true;
                 gameSFX.src = sfxSrc[1];
                 gameSFX.play();
-                setTimeout ( function(){
-                    alert('Game Over. Stay determined...');
-                    location.reload();
-                }, 500);
+                setTimeout (death(), 500);
+                return;
             }
             if (mid.src.includes(tp)) {
                 gameSFX.src = sfxSrc[2];
@@ -345,11 +378,7 @@ function walk() {
             if (mid.src.includes(win)) {
                 gameSFX.src = sfxSrc[0];
                 gameSFX.play();
-        
-                setTimeout ( function(){
-                    alert('You Win!');
-                    location.reload();
-                }, 1500);
+                setTimeout (gWin(), 1500);
             }
             if (my > 9 || my < 1 || mx > 9 || mx < 1){location.reload()}
             backButton.disabled = false;
@@ -461,10 +490,7 @@ function back() {
             backButton.disabled = true;
             gameSFX.src = sfxSrc[1];
             gameSFX.play();
-            setTimeout ( function(){
-            alert('Game Over. Stay determined...');
-            location.reload();
-        }, 500);
+            setTimeout ( death(), 500);
     }
     if (mid.src.includes(tp)) {
             gameSFX.src = sfxSrc[2];
@@ -536,7 +562,6 @@ function back() {
         backButton.disabled = true;
         moves ++;
         movesIndicator.innerHTML = 'Moves: '+moves;
-
     }
 
 
@@ -558,7 +583,7 @@ document.addEventListener('keydown', function (event) {
         arrow.style.transform = 'rotate(180deg)';
         player.style.transform = 'rotate(180deg)';
     } else if (event.key == '0') {
-        walk(1);
+        walk();
     }
 }
 )

@@ -2,6 +2,7 @@
 let musicTitle = document.getElementById('music-title');
 let musicArtist = document.getElementById('music-artist');
 let musicPlay = document.getElementById('music-play');
+let musicPopup = document.getElementById('playUp');
 let musicPause = document.getElementById('music-pause');
 let musicForward = document.getElementById('music-forward');
 let musicBackward = document.getElementById('music-backward');
@@ -9,6 +10,7 @@ let musicShuffle = document.getElementById('music-shuffle');
 
 // Audio element to play
 let playMusic = document.createElement('audio');
+playMusic.volume = 0.2;
 
 // Track List
 let trackList = [
@@ -49,6 +51,13 @@ function setPlay(num){
 }
 
 musicPlay.addEventListener('click', ()=>{
+    musicPause.style.display = "block";
+    musicPlay.style.display = "none";
+    setPlay(trackNum);
+    playMusic.play();
+});
+
+musicPopup.addEventListener('click', ()=>{
     musicPause.style.display = "block";
     musicPlay.style.display = "none";
     setPlay(trackNum);
