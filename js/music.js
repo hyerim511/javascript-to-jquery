@@ -8,8 +8,8 @@
 // let musicShuffle = document.getElementById('music-shuffle');
 
 // Audio element to play
-const playMusic = document.createElement('audio');
-// $('audio').addClass('musicPlayer');
+let playMusic = document.createElement('audio');
+playMusic.volume = 0.2;
 
 // Track List
 const trackList = [
@@ -76,6 +76,13 @@ $('#music-play').click(function(){
         let barWidth = (musicTime * 100) / musicLength;
         $('#progress-bar').css("width", barWidth + '%');
     }, 10);
+});
+
+musicPopup.addEventListener('click', ()=>{
+    musicPause.style.display = "block";
+    musicPlay.style.display = "none";
+    setPlay(trackNum);
+    playMusic.play();
 });
 
 // Play next track when it's ended

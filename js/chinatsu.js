@@ -1,3 +1,17 @@
+// hover
+$('#imgTarget').hover(function () {
+    $('#imgPop').show();
+    $('#toolTip').show();
+});
+
+//leave
+$('#imgTarget').mouseleave(function () {
+    $('#imgPop').hide();
+    $('#toolTip').hide();
+});
+
+
+/*--------------JS----------------
 // jsを適用するidを取得
 const imgTarget = document.getElementById("imgTarget");
 const imgPop = document.getElementById("imgPop");
@@ -15,3 +29,4 @@ imgTarget.addEventListener('mouseleave', () => {
     imgPop.style.display = 'none';
     toolTip.style.display = 'none';
 }, false);
+  --------------JS----------------*/
