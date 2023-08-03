@@ -47,7 +47,6 @@ let trackNum = 0;
 function progress() {
     $('#music-progress').click(function(e){
         playMusic.currentTime = e.offsetX / $('#music-progress').width() * 100;
-        // console.log(playMusic.currentTime);
     });
     setInterval(function(){
         let musicTime = Math.round(playMusic.currentTime);
