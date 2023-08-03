@@ -304,6 +304,7 @@ function walk() {
             if (mid.src.includes(grass)) {
                 walkButton.disabled = true;
                 backButton.disabled = true;
+                playMusic.pause();
                 gameSFX.src = sfxSrc[1];
                 gameSFX.play();
                 setTimeout (death(), 500);
@@ -495,6 +496,7 @@ function back() {
     if (mid.src.includes(grass)) {
             walkButton.disabled = true;
             backButton.disabled = true;
+            playMusic.pause();
             gameSFX.src = sfxSrc[1];
             gameSFX.play();
             setTimeout ( death(), 500);

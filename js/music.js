@@ -9,7 +9,7 @@ let musicBackward = document.getElementById('music-backward');
 let musicShuffle = document.getElementById('music-shuffle');
 
 // Audio element to play
-let playMusic = document.createElement('audio');
+const playMusic = document.createElement('audio');
 playMusic.volume = 0.2;
 
 // Track List
