@@ -46,14 +46,19 @@ let trackNum = 0;
 // -------------------------------- Progress bar
 function progress() {
     $('#music-progress').click(function(e){
-        playMusic.currentTime = e.offsetX / $('#music-progress').width() * 100;
+        let currentPosition = e.offsetX / $('#music-progress').width() * 100;
+        playMusic.currentTime = currentPosition * playMusic.duration / 100;
+        console.log(playMusic.currentTime);
     });
-    setInterval(function(){
+    let progressBar = setInterval(function(){
         let musicTime = Math.round(playMusic.currentTime);
         let musicLength = Math.round(playMusic.duration);
         let barWidth = (musicTime * 100) / musicLength;
         $('#progress-bar').css("width", barWidth + '%');
     }, 10);
+    $('#music-pause').click(function(){
+        clearInterval(progressBar);
+    });
 }
 
 // -------------------------------- Setting to play
