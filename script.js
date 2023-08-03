@@ -1,7 +1,7 @@
 $(document).ready(function(){
     $('.filter').show();
     $('#popup').show();
-    $(".hide").click(function(){
+    $(".btn-success").click(function(){
         $(".filter").fadeToggle();
         $("#popup").fadeToggle();
     });
@@ -93,6 +93,24 @@ const map = [
     [black, black, black, black, black, black, black, black, black, black, black],
 ]
 
+//--------------minimap-layout--------------
+var minimapArray = [new Array(11), new Array(11), new Array(11), new Array(11), new Array(11), new Array(11), new Array(11), new Array(11), new Array(11), new Array(11), new Array(11)];
+let co = 0;
+for(let i = 0; i <= 10; i++){
+    for(let j = 0; j <= 10; j++){
+        minimapArray[i][j] = '#mm' + co;
+        co++;
+    }
+}
+
+console.log(minimapArray);
+
+for(let i = 0; i <= 10; i++){
+    for(let j = 0; j <= 10; j++){
+        $(minimapArray[i][j]).attr('src', map[i][j]);
+    }
+}
+
 //--------------tile-positions--------------
 
 var nw
@@ -179,7 +197,7 @@ function arrowTate() {
 function death(){
     $('.filter').fadeToggle();
     $('#deathMessage').fadeToggle();
-    $(".hide").click(function(){
+    $(".btn-success").click(function(){
         location.reload();
     });
 }
@@ -187,7 +205,7 @@ function death(){
 function gWin(){
     $('.filter').fadeToggle();
     $('#winMessage').fadeToggle();
-    $(".hide").click(function(){
+    $(".btn-success").click(function(){
         location.reload();
     });
 }

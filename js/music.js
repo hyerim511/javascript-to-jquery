@@ -10,7 +10,7 @@ let musicShuffle = document.getElementById('music-shuffle');
 
 // Audio element to play
 let playMusic = document.createElement('audio');
-playMusic.volume = 0.2;
+playMusic.volume = 0.05;
 
 // Track List
 let trackList = [

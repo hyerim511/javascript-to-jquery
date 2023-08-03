@@ -29,7 +29,7 @@ header {
 }
 
 .game {
-    min-height: calc(100vh - 130px - 10vh);
+    max-height: calc(100vh - 130px - 10vh);
     height: 650px;
 }
 
@@ -203,10 +203,10 @@ footer {
     }
 
     .tooltipBlock {
+        position: absolute;
+        top: 200px;
+        left: 20px;
         width: 200px;
-        position: fixed;
-        right: -10vw;
-        bottom: 15vh;
     }
 
     #imgTarget, #imgPop {
