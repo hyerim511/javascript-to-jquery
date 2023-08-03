@@ -53,9 +53,6 @@ body {
 
 #mmContainer {
     position: relative;
-    height: 167px; width: 167px;
-    border: 2px solid red;
-    padding: 0;
 }
 
 .minimap {
@@ -66,7 +63,6 @@ body {
 #mmInd {
     position: absolute;
     image-rendering: pixelated;
-    top: 70px;
-    left: 70px;
-    z-index: 999;
+    top: 60px;
+    left: 60px;
 }
