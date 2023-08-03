@@ -1,4 +1,5 @@
 body {
+    box-sizing: border-box;
     overflow: hidden;
     backface-visibility: hidden;
 }
@@ -38,19 +39,29 @@ body {
 }
 
 .miniContainer {
-    position: fixed;
-    transform-origin: top left;
-    backface-visibility: hidden;
+    width: 166px;
+    height: 166px;
+    overflow: hidden;
 }
 
 .col-sm-1 {
-    height: 25px;
-    width: 25px;
+    height: 15px;
+    width: 15px;
 }
 
 .minimap {
-    position: fixed;
-    margin: 10px;
-    height: 275px;
-    width: 275px;
+    width: 166px;
+    height: 166px;
+    margin-bottom: -90px;
+}
+
+#mmContainer {
+    position: relative;
+}
+
+#mmInd {
+    position: absolute;
+    image-rendering: pixelated;
+    top: 60px;
+    left: 60px;
 }

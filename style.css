@@ -8,6 +8,10 @@ body {
     overflow-x: hidden;
 }
 
+img {
+    -webkit-user-drag: none;
+}
+
 .game {
     display: flex;
     align-items: center;
@@ -67,6 +71,7 @@ body {
 #movesIndicator {
     font-size: large;
     font-weight: 700;
+    margin-top: 10px;
 }
 
 .controls {
@@ -75,7 +80,6 @@ body {
     align-items: center;
     flex-direction: column;
     padding: 30px;
-    gap: 20px;
     background-color: lightblue;
 }
 

@@ -13,33 +13,24 @@ body {
 }
 
 /* IMAGE CAPTIONS */
-.tooltipBlock {
-    position: relative;
-    width: 28vh;
-    height: 7vh;
-}
 
 #imgTarget,
 #imgPop {
-    width: 25%;
-    left: 50%;
-    transform: translateX(-50%); /* 中央寄せのために水平方向に移動する */
-}
-
-#imgTarget {
     position: absolute;
+    width: 25%;
+    top: -18%;
+    left: -10%;
+    transform: scale(15%); /* 中央寄せのために水平方向に移動する */
 }
 
 #imgPop {
-    position: relative;
     display: none;
 }
 
 #toolTip {
     display: none;
     position: absolute; /* toolTipの表示有無で画像の位置が変わらないようにする */
-    left: 50%;
-    transform: translateX(-50%); /* 中央寄せのために水平方向に移動する */
+    left: 80px;
     top: 2rem;
     z-index: 1; /* レイヤーの一番上に持ってくる */
     background: #545454;
@@ -47,7 +38,7 @@ body {
     color: #FFF;
     list-style: none;
     border-radius: 0.3rem;
-    width: 100%;
+    width: 200px;
 }
 
 #toolTip:before {
@@ -55,9 +46,9 @@ body {
     position: absolute;
     border: 0.8rem solid transparent;
     border-top: 0.8rem solid #545454; /* border-top 下向きの矢印に変更 */
-    top: 100%; /* toolTipの下に配置 */
-    left: 50%; /* toolTipの中央に配置 */
-    transform: translateX(-50%); /* 中央寄せのために水平方向に移動する */
+    top: 40%; /* toolTipの下に配置 */
+    left: -8%; /* toolTipの中央に配置 */
+    transform: rotate(90deg);
 }
 
 .spanbold {

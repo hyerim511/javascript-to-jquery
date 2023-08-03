@@ -206,13 +206,12 @@ footer {
         position: absolute;
         top: 200px;
         left: 20px;
-        width: 200px;
+        width: 28vh;
     }
 
     #imgTarget, #imgPop {
         background-color: rgb(255, 106, 106);
         filter: none;
-        padding: 3%;
         border-radius: 50%;
     }
 

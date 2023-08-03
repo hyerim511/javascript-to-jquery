@@ -10,19 +10,24 @@ let musicShuffle = document.getElementById('music-shuffle');
 
 // Audio element to play
 let playMusic = document.createElement('audio');
-playMusic.volume = 0.05;
+playMusic.volume = 0.2;
 
 // Track List
 let trackList = [
     {
         title: "Awesome Game Music",
-        artist: "HHH",
-        path: "mp3/music1_01.mp3"
+        artist: "Toby Fox",
+        path: "mp3/music1.mp3"
     },
     {
         title: "Good Game Music",
         artist: "AAA",
         path: "mp3/music2.mp3"
+    },
+    {
+        title: "Best Game Music",
+        artist: "C418",
+        path: "mp3/music1_01.mp3"
     },
     {
         title: "Great Game Music",
