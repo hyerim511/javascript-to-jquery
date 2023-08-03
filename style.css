@@ -8,6 +8,10 @@ body {
     overflow-x: hidden;
 }
 
+img {
+    -webkit-user-drag: none;
+}
+
 .game {
     display: flex;
     align-items: center;
@@ -23,29 +27,28 @@ body {
     padding: 10px;
     margin: 150px;
     background-color: lightblue;
-    scale: 180%;
 }
 
 [id*="tile"] {
-    height: 100px;
-    width: 100px;
+    height: 160px;
+    width: 160px;
     background-color: red;
     box-sizing: border-box;
 }
 
 #middleTile {
-    height: 100px;
-    width: 100px;
+    height: 160px;
+    width: 160px;
     background-color: red;
 }
 
 #player {
-    height: 100px;
-    width: 100px;
+    height: 160px;
+    width: 160px;
     position: fixed;
     padding: 10px;
     translate: -100%;
-    z-index: 999;
+    z-index: 99;
 }
 
 #walkButton {
@@ -76,10 +79,17 @@ body {
     align-items: center;
     flex-direction: column;
     padding: 30px;
-    gap: 20px;
     background-color: lightblue;
 }
 
 #controls1 {
     align-items: center;
+}
+
+#mbox {
+    pointer-events: none;
+}
+
+#reload {
+    pointer-events: all;
 }

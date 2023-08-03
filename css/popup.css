@@ -1,3 +1,11 @@
+body {
+    box-sizing: border-box;
+    overflow: hidden;
+    backface-visibility: hidden;
+    margin: 0;
+    padding: 0;
+}
+
 .popup {
     display: none;
     position: absolute;
@@ -26,7 +34,35 @@
     z-index: 998;
 }
 
-.hide {
+.btn-success {
     padding: 5px;
     margin-top: 30px;
+    font-size: large;
+}
+
+.miniContainer {
+    width: 166px;
+    height: 166px;
+    overflow: hidden;
+}
+
+.col-sm-1 {
+    height: 15px;
+    width: 15px;
+}
+
+#mmContainer {
+    position: relative;
+}
+
+.minimap {
+    width: 166px;
+    height: 166px;
+}
+
+#mmInd {
+    position: absolute;
+    image-rendering: pixelated;
+    top: 60px;
+    left: 60px;
 }

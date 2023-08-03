@@ -1,7 +1,7 @@
 $(document).ready(function(){
     $('.filter').show();
     $('#popup').show();
-    $(".hide").click(function(){
+    $(".btn-success").click(function(){
         $(".filter").fadeToggle();
         $("#popup").fadeToggle();
     });
@@ -70,28 +70,20 @@ function go(sides) {
 
 //--------------tile-types--------------
 
-const grass = "imgs/grass.png";
-const path = "imgs/path.png";
-const black = "imgs/black.png";
-const tp = 'imgs/tp.png';
-const tp2 = 'imgs/tp2.png';
-const win = 'imgs/win.png';
 
-//--------------map-layout--------------
 
-const map = [
-    [black, black, black, black, black, black, black, black, black, black, black],
-    [black, grass, path , path , path , path , path , path , path , tp   , black],
-    [black, grass, path , grass, grass, grass, grass, grass, path , grass, black],
-    [black, grass, path , path , grass, path , path , path , path , grass, black],
-    [black, grass, grass, path , grass, path , grass, grass, grass, grass, black],
-    [black, grass, grass, path , grass, path , grass, grass, grass, grass, black],
-    [black, grass, path , path , grass, grass, grass, grass, grass, win  , black],
-    [black, grass, path , grass, grass, grass, grass, grass, grass, path , black],
-    [black, tp2  , path , path , path , path , path , path , path , path , black],
-    [black, grass, grass, grass, grass, grass, grass, grass, grass, grass, black],
-    [black, black, black, black, black, black, black, black, black, black, black],
-]
+//--------------minimap-layout--------------
+var minimapArray = [new Array(11), new Array(11), new Array(11), new Array(11), new Array(11), new Array(11), new Array(11), new Array(11), new Array(11), new Array(11), new Array(11)];
+let co = 0;
+for(let i = 0; i <= 10; i++){
+    for(let j = 0; j <= 10; j++){
+        minimapArray[i][j] = '#mm' + co;
+        $(minimapArray[i][j]).attr('src', map[i][j]);
+        co++;
+    }
+}
+
+console.log(minimapArray);
 
 //--------------tile-positions--------------
 
@@ -151,6 +143,7 @@ const allTiles = document.getElementsByClassName('tile');
 
 const player = document.getElementById('player');
 const arrow = document.getElementById('arrow');
+const mmInd = $('#mmInd');
 var rot = 0;
 
 function arrowTate() {
@@ -158,18 +151,22 @@ function arrowTate() {
     rot++
 
     if (rot == 1) {
-        arrow.style.transform = 'rotate(90deg)';
-        player.style.transform = 'rotate(90deg)';
+        $('#arrow').css({'transform' : 'rotate('+ 90 +'deg)'});
+        $('#player').css({'transform' : 'rotate('+ 90 +'deg)'});
+        $('#mmInd').css({'transform' : 'rotate('+ 90 +'deg)'});
     } else if (rot == 2) {
-        arrow.style.transform = 'rotate(180deg)';
-        player.style.transform = 'rotate(180deg)';
+        $('#arrow').css({'transform' : 'rotate('+ 180 +'deg)'});
+        $('#player').css({'transform' : 'rotate('+ 180 +'deg)'});
+        $('#mmInd').css({'transform' : 'rotate('+ 180 +'deg)'});
     } else if (rot == 3) {
-        arrow.style.transform = 'rotate(270deg)';
-        player.style.transform = 'rotate(270deg)';
+        $('#arrow').css({'transform' : 'rotate('+ 270 +'deg)'});
+        $('#player').css({'transform' : 'rotate('+ 270 +'deg)'});
+        $('#mmInd').css({'transform' : 'rotate('+ 270 +'deg)'});
     } else {
         rot = 0;
-        arrow.style.transform = 'rotate(0deg)';
-        player.style.transform = 'rotate(0deg)';
+        $('#arrow').css({'transform' : 'rotate('+ 0 +'deg)'});
+        $('#player').css({'transform' : 'rotate('+ 0 +'deg)'});
+        $('#mmInd').css({'transform' : 'rotate('+ 0 +'deg)'});
     }
 
 }
@@ -179,7 +176,7 @@ function arrowTate() {
 function death(){
     $('.filter').fadeToggle();
     $('#deathMessage').fadeToggle();
-    $(".hide").click(function(){
+    $(".btn-success").click(function(){
         location.reload();
     });
 }
@@ -187,7 +184,7 @@ function death(){
 function gWin(){
     $('.filter').fadeToggle();
     $('#winMessage').fadeToggle();
-    $(".hide").click(function(){
+    $(".btn-success").click(function(){
         location.reload();
     });
 }
@@ -209,7 +206,7 @@ function walk() {
     while(count < llor){ 
 
             if (rot == 0) {
-                if (ny < 1) { }
+                if (north.src.includes(black)) { }
                 else {
                     nwy --;
                     northw.src = map[nwy][nwx];
@@ -229,10 +226,11 @@ function walk() {
                     south.src = map[sy][sx];
                     sey --;
                     southe.src = map[sey][sex];
+                    $("#mmInd").animate({top: '-=15px'});
                 }
             }
             if (rot == 1) {
-                if (ex > 9) { }
+                if (east.src.includes(black)) { }
                 else {
                     nwx ++;
                     northw.src = map[nwy][nwx];
@@ -252,10 +250,11 @@ function walk() {
                     south.src = map[sy][sx];
                     sex ++;
                     southe.src = map[sey][sex];
+                    $("#mmInd").animate({left: '+=15px'});
                 }
             }
             if (rot == 2) {
-                if (sy > 9) { }
+                if (south.src.includes(black)) { }
                 else {
                     nwy ++;
                     northw.src = map[nwy][nwx];
@@ -275,10 +274,11 @@ function walk() {
                     south.src = map[sy][sx];
                     sey ++;
                     southe.src = map[sey][sex];
+                    $("#mmInd").animate({top: '+=15px'});
                 }
             }
             if (rot == 3) {
-                if (wx < 1) { }
+                if (west.src.includes(black)) { }
                 else {
                     nwx --;
                     northw.src = map[nwy][nwx];
@@ -298,11 +298,13 @@ function walk() {
                     south.src = map[sy][sx];
                     sex --;
                     southe.src = map[sey][sex];
+                    $("#mmInd").animate({left: '-=15px'});
                 }
             }
             if (mid.src.includes(grass)) {
                 walkButton.disabled = true;
                 backButton.disabled = true;
+                playMusic.pause();
                 gameSFX.src = sfxSrc[1];
                 gameSFX.play();
                 setTimeout (death(), 500);
@@ -339,6 +341,7 @@ function walk() {
                     sey = 9;
                     sex = 3;
                     southe.src = map[sey][sex];
+                    $("#mmInd").animate({left: '15px', top:'105px'}, 0);
                 }, 100);
             }
             if (mid.src.includes(tp2)) {
@@ -372,6 +375,7 @@ function walk() {
                     sey = 2;
                     sex = 9;
                     southe.src = map[sey][sex];
+                    $("#mmInd").animate({left: '105px', top:'0'}, 0);
                 }, 100);
         
             }
@@ -414,6 +418,7 @@ function back() {
                 south.src = map[sy][sx];
                 sey++
                 southe.src = map[sey][sex];
+                $("#mmInd").animate({top: '+=15px'});
             }
     }
     if (rot == 1) {
@@ -437,6 +442,7 @@ function back() {
                 south.src = map[sy][sx];
                 sex--;
                 southe.src = map[sey][sex];
+                $("#mmInd").animate({left: '-=15px'});
             }
     }
     if (rot == 2) {
@@ -460,6 +466,7 @@ function back() {
                 south.src = map[sy][sx];
                 sey--;
                 southe.src = map[sey][sex];
+                $("#mmInd").animate({top: '-=15px'});
             }
     }
     if (rot == 3) {
@@ -483,11 +490,13 @@ function back() {
                 south.src = map[sy][sx];
                 sex++;
                 southe.src = map[sey][sex];
+                $("#mmInd").animate({left: '+=15px'});
             }
     }
     if (mid.src.includes(grass)) {
             walkButton.disabled = true;
             backButton.disabled = true;
+            playMusic.pause();
             gameSFX.src = sfxSrc[1];
             gameSFX.play();
             setTimeout ( death(), 500);
@@ -568,20 +577,24 @@ function back() {
 document.addEventListener('keydown', function (event) {
     if (event.key == 'ArrowLeft') {
         rot = 3;
-        arrow.style.transform = 'rotate(270deg)';
-        player.style.transform = 'rotate(270deg)';
+        $('#arrow').css({'transform' : 'rotate('+ 270 +'deg)'});
+        $('#player').css({'transform' : 'rotate('+ 270 +'deg)'});
+        $('#mmInd').css({'transform' : 'rotate('+ 270 +'deg)'});
     } else if (event.key == 'ArrowUp') {
         rot = 0;
-        arrow.style.transform = 'rotate(0deg)';
-        player.style.transform = 'rotate(0deg)';
+        $('#arrow').css({'transform' : 'rotate('+ 0 +'deg)'});
+        $('#player').css({'transform' : 'rotate('+ 0 +'deg)'});
+        $('#mmInd').css({'transform' : 'rotate('+ 0 +'deg)'});
     } else if (event.key == 'ArrowRight') {
         rot = 1;
-        arrow.style.transform = 'rotate(90deg)';
-        player.style.transform = 'rotate(90deg)';
+        $('#arrow').css({'transform' : 'rotate('+ 90 +'deg)'});
+        $('#player').css({'transform' : 'rotate('+ 90 +'deg)'});
+        $('#mmInd').css({'transform' : 'rotate('+ 90 +'deg)'});
     } else if (event.key == 'ArrowDown') {
         rot = 2;
-        arrow.style.transform = 'rotate(180deg)';
-        player.style.transform = 'rotate(180deg)';
+        $('#arrow').css({'transform' : 'rotate('+ 180 +'deg)'});
+        $('#player').css({'transform' : 'rotate('+ 180 +'deg)'});
+        $('#mmInd').css({'transform' : 'rotate('+ 180 +'deg)'});
     } else if (event.key == '0') {
         walk();
     }

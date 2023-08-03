@@ -8,15 +8,16 @@
     <title>Realm of the Rolling Knight</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="dice-roller.css">
     <link rel="stylesheet" href="css/chinatsu.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/music.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/popup.css">
-    <link rel="stylesheet" href="css/minimap.css">
     <link rel="stylesheet" href="css/timer.css">
 </head>
 
@@ -26,20 +27,18 @@
 
     <div class="popup" id="popup">
         <h1>Welcome!</h1>
-        <button class="hide" id="playUp">okay</button>
+        <button class="btn btn-success" id="playUp">Play</button>
     </div>
 
     <div class="popup" id="deathMessage">
         <h1>game over, stay determined...</h1>
-        <button class="hide">respawn</button>
+        <button class="btn btn-success">Respawn</button>
     </div>
 
     <div class="popup" id="winMessage">
         <h1>u won!!</h1>
-        <button class="hide">okay</button>
+        <button class="btn btn-success">okay</button>
     </div>
-
-    <iframe src="minimap.html" class="minimap"></iframe>
 
     <header>
         <h1>Realm of the Rolling Knight</h1>
@@ -52,23 +51,35 @@
                 <h1>Roll:</h1>
                 <p id="placeholder"></p>
             </div>
-    
-        <div class="grid">
-            <button id="rollButton" onclick="go(d4)"><img class="dice1" src="imgs/d4.png"></button>
 
-            <div id="multi">
-                <img onclick="mtplr()" src="imgs/plus.png" height="20px">
-                <div id="mbox">
-                    <p id="ecs">x</p>
-                    <span id="multiplier">1</span>
+            <div class="grid">
+                <button id="rollButton" onclick="go(d4)"><img class="dice1" src="imgs/d4.png"></button>
+
+                <div id="multi">
+                    <img onclick="mtplr()" src="imgs/plus.png" height="20px">
+                    <div id="mbox">
+                        <p id="ecs">x</p>
+                        <span id="multiplier">1</span>
+                    </div>
+                    <img onclick="reset()" id="reload" src="imgs/reload.png" height="20px">
                 </div>
-                <img onclick="reset()" id="reload" src="imgs/reload.png" height="20px">
             </div>
+
+            <!-- TOOLTIP -->
+            <div class="tooltipBlock">
+                <ul id="toolTip">
+                    <li><span class="spanbold">Brown</span> : WALK</li>
+                    <li><span class="spanbold">Blue&Orange</span> : WARP</li>
+                    <li><span class="spanbold">Yellow</span> : GOAL</li>
+                </ul>
+                <div class="tool-imgs">
+                    <img id="imgTarget" src="imgs/question.png" alt="">
+                    <img id="imgPop" src="imgs/question-light.png" alt="">
+                </div>
+            </div>
+
         </div>
 
-    
-        </div>
-    
         <div class="fov">
             <img id="tile1">
             <img id="tile2">
@@ -87,21 +98,16 @@
                 <img onclick="arrowTate()" id="arrow" src="imgs/arrow.png" alt="arrow" height="50px">
                 <button id="walkButton" onclick="walk()">Walk</button>
                 <button id="backButton" onclick="back()">Back</button>
-            </div>        
+            </div>
 
             <p id="movesIndicator">Moves: 0</p>
-            <!-- TOOLTIP -->
-            <div class="tooltipBlock">
-                <ul id="toolTip">
-                    <li><span class="spanbold">Brown</span> : WALK</li> 
-                    <li><span class="spanbold">Blue&Orange</span> : WARP</li>
-                    <li><span class="spanbold">Yellow</span> : GOAL</li>
-                </ul>
-                <div class="tool-imgs">
-                    <img id="imgTarget" src="imgs/question.png" alt="">
-                    <img id="imgPop" src="imgs/question-light.png" alt="">
-                </div>
+
+            <div id="mmContainer">
+                <img id="mmInd" src="imgs/mmInd.png">
+                <iframe src="minimap.html" class="minimap"></iframe>
             </div>
+
+            
         </div>
     </section>
 
@@ -112,6 +118,7 @@
 
     <footer class="d-flex bg-black justify-content-between align-items-center">
         <section class="copyright text-secondary">
+
             <p>
                 Copyright &copy 2023 Chinatsu / Gabriel / Hyerim
             </p>
@@ -151,10 +158,13 @@
     </footer>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <script src="js/music.js"></script>
+    <script src="js/map.js"></script>
     <script src="script.js" async defer></script>
     <script src="js/chinatsu.js"></script>
-    <script src="js/music.js"></script>
     <script src="js/timer.js"></script>
 </body>
 
