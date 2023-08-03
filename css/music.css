@@ -5,7 +5,7 @@
 
 .music {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: flex;
+    /* display: flex; */
     width: 60%;
 }
 
@@ -29,25 +29,44 @@
 
 .music-control {
     padding: 1%;
-    display: flex;
+    /* display: flex; */
     gap: 10px;
 }
 
 .music-control button {
-    border: none;
-    background-color: #242424;
+    /* border: none; */
+    /* background-color: #242424; */
     width: 50px;
     height: 50px;
     border-radius: 50%;
     color: #77c700;
-    border: 1px solid transparent;
+    /* border: 1px solid transparent; */
 }
 
-.music-control button:hover {
-    /* background-color: #a2a2a2; */
+/* .music-control button:hover {
+    background-color: #a2a2a2;
     border-color: #77c700;
+} */
+
+.music-control .shuffle-on {
+    background-color: #77c700;
+    color: black;
 }
 
 #music-pause {
     display: none;
+}
+
+/*  */
+
+#music-progress {
+    background-color: #3d3d3d;
+    height: 10px;
+    width: 100%;
+}
+
+#progress-bar {
+    background-color: #77c700;
+    height: 10px;
+    width: 0;
 }
