@@ -104,33 +104,42 @@
         </div>
     </section>
     
-    <footer>
-        <section class="copyright">
+    <footer class="d-flex bg-black justify-content-between align-items-center">
+        <section class="copyright text-secondary">
             <p>
                 Copyright &copy 2023 Chinatsu / Gabriel / Hyerim
             </p>
         </section>
-        <section class="music">
+        <section class="music d-flex">
             <div class="music-info">
                 <p id="music-title">Let's Play the Music!</p>
                 <small id="music-artist">-</small>
+                <div id="music-progress"><div id="progress-bar"></div></div>
             </div>
-            <div class="music-control">
-                <button id="music-backward">
+            <div class="music-control d-flex">
+                <button id="music-backward" type="button" class="btn btn-outline-success">
                     <i class="fa-solid fa-backward"></i>
                 </button>
-                <button id="music-play">
+                <button id="music-play" type="button" class="btn btn-outline-success">
                     <i class="fa-solid fa-play"></i>
                 </button>
-                <button id="music-pause">
+                <button id="music-pause" type="button" class="btn btn-outline-success">
                     <i class="fa-solid fa-pause"></i>
                 </button>
-                <button id="music-forward">
+                <button id="music-forward" type="button" class="btn btn-outline-success">
                     <i class="fa-solid fa-forward"></i>
                 </button>
-                <button id="music-shuffle">
+                <button id="music-shuffle" type="button" class="btn btn-outline-success">
                     <i class="fa-solid fa-shuffle"></i>
                 </button>
+                <div class="dropdown" data-bs-theme="dark">
+                    <button id="music-list" type="button" class="btn btn-outline-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-list-ul"></i>
+                    </button>
+                    <ul class="dropdown-menu" id="music-item">
+                    </ul>
+                </div>
+                
             </div>
         </section>
     </footer>

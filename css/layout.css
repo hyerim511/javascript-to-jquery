@@ -42,16 +42,16 @@ header h1 {
 
 footer {
     height: var(--fh);
-    display: flex;
-    background-color: black;
-    align-items: center;
-    justify-content: space-between;
+    /* display: flex; */
+    /* background-color: black; */
+    /* align-items: center; */
+    /* justify-content: space-between; */
     padding: 1% 2%;
 }
 
-.copyright {
+/* .copyright {
     color: grey;
-}
+} */
 
 /* Change Layout and style */
 
