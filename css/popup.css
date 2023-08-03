@@ -2,6 +2,8 @@ body {
     box-sizing: border-box;
     overflow: hidden;
     backface-visibility: hidden;
+    margin: 0;
+    padding: 0;
 }
 
 .popup {
@@ -49,19 +51,22 @@ body {
     width: 15px;
 }
 
+#mmContainer {
+    position: relative;
+    height: 167px; width: 167px;
+    border: 2px solid red;
+    padding: 0;
+}
+
 .minimap {
     width: 166px;
     height: 166px;
-    margin-bottom: -90px;
-}
-
-#mmContainer {
-    position: relative;
 }
 
 #mmInd {
     position: absolute;
     image-rendering: pixelated;
-    top: 60px;
-    left: 60px;
+    top: 70px;
+    left: 70px;
+    z-index: 999;
 }
